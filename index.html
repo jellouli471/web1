@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الأنمي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Rubik', sans-serif;
+            background: linear-gradient(to bottom right, #0f172a, #1e1b4b);
+            min-height: 100vh;
+        }
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-shine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card-shine:hover::before {
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            .card-shine::before {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- الهيدر -->
+    <header class="fixed w-full z-50 bg-white/5 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- الشعار والقائمة -->
+                <div class="flex items-center gap-10">
+                    <div class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                        AnimeVerse
+                    </div>
+                    <nav class="hidden md:flex gap-5">
+                        <a href="#" class="hover:text-cyan-400 transition-colors">الرئيسية</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">تصنيفات</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">قائمة المتابعة</a>
+                        <a href="#" class="hover:text-cyan-400  transition-colors">المفضلة</a>
+                    </nav>
+                </div>
+
+                <!-- البحث والحساب -->
+                <div class="flex items-center gap-4">
+                    <div class="relative flex-1">
+                        <input type="text" 
+                               id="searchInput"
+                               class="w-full h-10 bg-white/10 rounded-lg pl-10 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-white/30" 
+                               placeholder="ابحث عن الأنمي...">
+                        <button onclick="handleSearch()" class="absolute left-2 top-1/2 -translate-y-1/2 text-white/50 hover:text-white">
+                            بحث
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- العنوان -->
+        <div class="mb-10">
+            <h1 class="text-4xl font-bold mb-4">استكشف عالم الأنمي</h1>
+            <div class="flex space-x-4 gap-5">
+                <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">الأكثر مشاهدة</button>
+                <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">أحدث الإصدارات</button>
+                <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">مكتملة</button>
+            </div>
+        </div>
+
+        <!-- شبكة الأنمي -->
+        <div class="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6" id="animeList">
+            <!-- سيتم إضافة بطاقات الأنمي هنا عبر JavaScript -->
+        </div>
+    </main>
+</body>
+<script src="api.js" type="module"></script>
+<script src="script.js" type="module"></script>
+<script>
+    function handleSearch() {
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.trim();
+        
+        if (searchTerm) {
+            // تحويل المستخدم إلى صفحة البحث مع مصطلح البحث
+            window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+        }
+    }
+
+    // إضافة خاصية البحث عند الضغط على Enter
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    });
+</script>
+
+</html> 

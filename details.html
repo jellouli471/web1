@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الأنمي - AnimeVerse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Rubik', sans-serif;
+            background: linear-gradient(to bottom right, #0f172a, #1e1b4b);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- الهيدر -->
+    <header class="fixed w-full z-50 bg-white/5 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- الشعار والقائمة -->
+                <div class="flex items-center gap-10">
+                    <a href="index.html" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                        AnimeVerse
+                    </a>
+                    <nav class="hidden md:flex gap-5">
+                        <a href="index.html" class="hover:text-cyan-400 transition-colors">الرئيسية</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">تصنيفات</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">قائمة المتابعة</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">المفضلة</a>
+                    </nav>
+                </div>
+
+                <!-- البحث -->
+                <div class="flex items-center gap-4">
+                    <div class="relative flex-1">
+                        <input type="text" 
+                               id="searchInput"
+                               class="w-full h-10 bg-white/10 rounded-lg pl-10 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-white/30" 
+                               placeholder="ابحث عن الأنمي...">
+                        <button id="searchButton" class="absolute left-2 top-1/2 -translate-y-1/2 text-white/50 hover:text-white">
+                            بحث
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- مؤشر التحميل -->
+        <div id="loadingIndicator" class="hidden py-20">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <div class="w-10 h-10 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-gray-400">جاري التحميل...</p>
+            </div>
+        </div>
+
+        <!-- تفاصيل الأنمي -->
+        <div id="animeDetails" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-[300px,1fr] gap-8">
+                <!-- صورة الأنمي -->
+                <div class="space-y-4">
+                    <img id="animeImage" src="" alt="" class="w-full rounded-lg">
+                    <div class="bg-white/5 rounded-lg p-4 space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">التصنيف</span>
+                            <span id="animeType" class="text-cyan-400">TV</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">الحالة</span>
+                            <span id="animeStatus">مستمر</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">تاريخ العرض</span>
+                            <span id="animeYear">2024</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">عدد الحلقات</span>
+                            <span id="episodeCount">12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- معلومات الأنمي -->
+                <div class="space-y-6">
+                    <div>
+                        <h1 id="animeTitle" class="text-3xl font-bold mb-2"></h1>
+                        <div class="flex flex-wrap gap-2" id="animeGenres">
+                            <!-- سيتم إضافة التصنيفات هنا -->
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-bold mb-3">القصة</h2>
+                        <p id="animeSynopsis" class="text-gray-400 leading-relaxed"></p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-bold mb-3">الحلقات</h2>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2" id="episodesList">
+                            <!-- سيتم إضافة الحلقات هنا -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="api.js" type="module"></script>
+    <script src="details.js" type="module"></script>
+</body>
+</html> 
