@@ -15,7 +15,7 @@ function displayAnimeDetails(animeUrl) {
     animeDetails.classList.add('hidden');
 
     // جلب تفاصيل الأنمي
-    fetch(`https://guided-talented-snapper.ngrok-free.app/anime/details/${animeUrl}`, {
+    fetch(`https://anime.apiclub.site/anime/details/${animeUrl}`, {
         headers: {
             'accept': 'application/json',
             'X-API-Key': API_KEY,
