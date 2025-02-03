@@ -18,7 +18,7 @@ function displaySearchResults(query) {
     resultsContainer.innerHTML = ''; // مسح النتائج السابقة
 
     // جلب النتائج من API
-    fetch(`https://guided-talented-snapper.ngrok-free.app/search/web/${encodeURIComponent(query)}`, {
+    fetch(`https://anime.apiclub.site/search/web/${encodeURIComponent(query)}`, {
         headers: {
             'X-API-Key': API_KEY,
             'ngrok-skip-browser-warning': 'true'
