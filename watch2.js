@@ -16,7 +16,7 @@ function displayEpisodeDetails(episodeUrl) {
     episodeContent.classList.add('hidden');
 
     // جلب تفاصيل الحلقة - تحديث الرابط
-    fetch(`https://guided-talented-snapper.ngrok-free.app/episode/servers/${episodeUrl}`, {
+    fetch(`https://anime.apiclub.site/episode/servers/${episodeUrl}`, {
         headers: {
             'accept': 'application/json',
             'X-API-Key': API_KEY,
